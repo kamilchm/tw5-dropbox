@@ -1610,6 +1610,8 @@ declare module DropboxTypes {
        * /developers/reference/content-hash} page.
        */
       content_hash?: Sha256HexHash;
+
+      fileBlob: Blob;
     }
 
     /**

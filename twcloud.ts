@@ -39,8 +39,7 @@ namespace wrapper {
 		originalPath: string;
 		client: Dropbox;
 		isProd: false
-		apiKeyFull = "gy3j4gsa191p31x"
-		apiKeyApps = "tu8jc7jsdeg55ta"
+		apiKeyApps = "p3fk2hrqyr12tq2"
 		token: {
 			access_token: string,
 			account_id: string,
@@ -51,7 +50,7 @@ namespace wrapper {
 		constructor(type: string, hash: string) {
 			if (type !== "apps" && type !== "full") throw "type must be either apps or full"
 			this.client = new Dropbox({
-				clientId: (type === "full" ? this.apiKeyFull : (type === "apps" ? this.apiKeyApps : ""))
+				clientId: this.apiKeyApps
 			});
 
 			// Authenticate against Dropbox
@@ -229,7 +228,7 @@ namespace wrapper {
 					reader.addEventListener("loadend", () => {
 						// We have to manually decode the file as UTF8, annoyingly
 						// [ I wonder if this is still necessary in v2 since it is a buffer -Arlen ]
-						const byteData = new Uint8Array(reader.result);
+						const byteData = new Uint8Array(<ArrayBuffer>reader.result);
 						const unicode = this.manualConvertUTF8ToUnicode(byteData);
 						this.originalPath = path;
 						this.originalText = unicode;

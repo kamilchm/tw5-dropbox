@@ -17,13 +17,12 @@ var wrapper;
     var twits = /** @class */ (function () {
         function twits(type, hash) {
             var _this = this;
-            this.apiKeyFull = "gy3j4gsa191p31x";
-            this.apiKeyApps = "tu8jc7jsdeg55ta";
+            this.apiKeyApps = "p3fk2hrqyr12tq2";
             this.token = {};
             if (type !== "apps" && type !== "full")
                 throw "type must be either apps or full";
             this.client = new Dropbox({
-                clientId: (type === "full" ? this.apiKeyFull : (type === "apps" ? this.apiKeyApps : ""))
+                clientId: this.apiKeyApps
             });
             // Authenticate against Dropbox
             this.setStatusMessage("Authenticating with Dropbox...");
